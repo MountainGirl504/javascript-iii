@@ -48,7 +48,12 @@ function totalPopulation (obj){
 // Write a function called ingredients that will take in an object. This object will have 3 properties named carb, fat, and protein. The property values will be strings. Use object destructuring to save the property values to new variables. Push these new variables to an array and return the array.
 
   // CODE HERE
-
+function ingredients (obj){
+ var {carb, fat, protein} = obj;
+ var array = [];
+ array.push(carb, fat, protein);
+ return array;
+}
 
 // ========================
 
@@ -62,7 +67,9 @@ function totalPopulation (obj){
 // Write a function called largeNumbers that will take a destructured object as it's parameter. The object properties will be named first, second, and third and their values will be numbers. Find the smallest number of the three and return that number.
 
   // CODE HERE
-
+function largeNumbers({first, second, third}) { 
+  return Math.min(first, second, third)
+}
 
 // ========================
 
@@ -70,3 +77,15 @@ function totalPopulation (obj){
 // Write a function called numberGroups that will take a destructured object as it's parameter. The object properties will be named a, b, and c and their values will be arrays of numbers. Find the longest array and return that array.
 
   // CODE HERE
+  function numberGroups({a,b,c}){
+    var longestArr;
+    var greatestLen = 0;
+    var arrays = [a, b, c];
+    for (var i = 0; i < arrays.length; i++) {
+      if (arrays[i].length > greatestLen) {
+        greatestLen = arrays[i].length;
+        longestArr = arrays[i];
+      }
+    }
+    return longestArr;
+  }

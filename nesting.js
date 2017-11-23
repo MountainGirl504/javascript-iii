@@ -37,12 +37,12 @@ var employees = [{
 //  3. Return the updated employee array.
 
 // Code here
-var employeeUpdater = () => {
+function employeeUpdater () {
   for (var i=0; i<employees.length; i++) {
     if (employees[i].firstName === "Theo") {
-      delete employees[i];
+      employees.splice(i, 1);
     }
-    if (employees[i].firstName === "Lorie") {
+     else if (employees[i].firstName === "Lorie") {
       employees[i].department = "HR";
     }
   }
@@ -68,16 +68,21 @@ var employeeUpdater = () => {
 
 var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
 
-var removeDuplicates = (workplaceAccidents.filter(number) => {
-  for (var y = 0; y < workplaceAccidents.length; y++) {
-    if(number[y]===number[y+1])
-    workplaceAccidents.slice(number[y], 1);
-  }
-})
-
-
-
-
+function removeDuplicates(){
+  var duplicates=[];
+ for (var i=0; i<workplaceAccidents.length; i++){
+   duplicates = workplaceAccidents.slice(i+1);
+   //console.log("DUPLICATES",duplicates)
+   for (var j=0; j<duplicates.length; j++) {
+     if (workplaceAccidents[i] === duplicates[j]) {
+       workplaceAccidents[i] = -1; 
+     }
+   }
+ }
+ 
+ return workplaceAccidents.filter(item => item !== -1);
+ //console.log("ORIGINAL ARRAY", workplaceAccidents)
+}
 
 
 
@@ -102,8 +107,10 @@ var cat = {
 
 // Code here
 
-var grumpyActivity;
-var fluffy2ndFriend;
+var grumpyActivity = cat.catFriends[0].activities[1];
+//console.log(grumpyActivity)
+var fluffy2ndFriend = cat.catFriends[1].name;
+//console.log(fluffy2ndFriend)
 
 
 
@@ -141,7 +148,14 @@ var myCar = {
 }
 
 // Code here
-
+function recordCleaner(){
+  var array = myCar.accidents;
+  for (var i=0; i<array.length; i++) {
+    array[i].atFaultForAccident = false;
+  }
+  //console.log(myCar)
+  return myCar;
+}
 
 
 
@@ -160,3 +174,16 @@ var myCar = {
 // 4. Return the modified numsArr.
 
 var numsArr = [ [1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
+ function looper(){
+   for (var i=0; i<numsArr.length; i++){
+     for (var j=0; j<numsArr[i].length; j++){
+       if (numsArr[i][j] % 2 === 0){
+         numsArr[i][j]= "even"
+       } else {
+         numsArr[i][j]= "odd"
+       }
+     }
+   }
+   //console.log(numsArr)
+   return numsArr;
+ }
